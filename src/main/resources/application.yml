@@ -1,0 +1,42 @@
+spring:
+   profiles:
+    active: local
+   session.store-type : none  
+   application:
+    name: user-management
+   jpa:
+     show-sql: true
+     hibernate:
+       ddl-auto: none
+       naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+     properties:  
+       hibernate:
+         id.new_generator_mappings: true 
+         dialect: org.hibernate.dialect.MySQL5Dialect
+         use-new-id-generator-mappings: true
+server:
+  port: 8080
+  session:
+    timeout: 1800
+  context-path: /TriggerEmail
+---
+spring:
+  profiles: local
+  datasource:
+    continueOnError: true
+    url: jdbc:mysql://localhost:3306/pbb_dev?useSSL=false
+   # url: jdbc:mysql://192.168.84.161:3306/pbb_testing?useSSL=false
+    username: root
+    password: admin@123
+pbb.usermanagement.restapi.base.url: http://localhost:8080/PBB_USER_MANAGEMENT
+pbb.base.url: http://localhost:8080/pbb
+---
+spring:
+  jackson:
+    serialization.FAIL_ON_EMPTY_BEANS: false
+---
+#pbb forgot password
+mail.smtp.host: 10.6.12.154
+mail.smtp.port : 25
+mail.smtp.from : onepoint.HR@itcinfotech.com
