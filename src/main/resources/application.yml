@@ -14,7 +14,7 @@ spring:
     
   JPA:
     properties:
-      HIBERNATE:
+     HIBERNATE:
         dialect: org.hibernate.dialect.MySQL5Dialect
         use_nationalized_character_data: true
         DDL-auto: create
